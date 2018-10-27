@@ -22,4 +22,27 @@ xset dpms force off
 git ssh方法
 https://blog.csdn.net/q1302182594/article/details/52954575
 <----------------------------------------------------------------------------------------------------------------------------------->
+当机器安装完交叉编译链以后，需要进行如下操作
+1.设置环境变量（添加到/etc/profile）中 
+export PATH=/usr/local/arm/4.3.2/bin:$PATH
+export TOOLCHAIN=/usr/local/arm/4.3.2
+export TB_CC_PREFIX=arm-linux-
+export PKG_CONFIG_PREFIX=$TOOLCHAIN/arm-none-linux-gnueabi
+export CONFIG_CROSS_COMPILE = /usr/local/arm/4.3.2/bin/arm-linux-
+2.为了编译 aws 需要安装cmake
+3.更新apt源 选择阿里云比较快
+sudo gedit sources.list
+
+deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+
+sudo apt-get update
 
