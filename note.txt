@@ -45,4 +45,51 @@ deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted univer
 deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
 
 sudo apt-get update
+<----------------------------------------------------------------------------------------------------------------------------------->
+一、参考文档：
+    1. compiling coreutils: help2man: can't get `--help' info from man/cp.td/cp Try `--no-discard-stderr'  
+        http://albertcn.blog.163.com/blog/static/2094201452015229784694/
 
+二、解决方法：
+    修改Makefile源代码: /home/zengjf/zengjf/fsl-release-bsp/imx6q-x11/tmp/work/x86_64-linux/automake-native/1.15-r0/build/Makefile
+        [...省略]
+        doc/aclocal-$(APIVERSION).1: $(aclocal_script) lib/Automake/Config.pm
+                $(update_mans) aclocal-$(APIVERSION)
+        doc/automake-$(APIVERSION).1: $(automake_script) lib/Automake/Config.pm
+                $(update_mans) automake-$(APIVERSION) --no-discard-stderr
+        [...省略]
+<----------------------------------------------------------------------------------------------------------------------------------->
+安装m4
+
+wget http://mirrors.kernel.org/gnu/m4/m4-1.4.13.tar.gz \
+&& tar -xzvf m4-1.4.13.tar.gz \
+&& cd m4-1.4.13 \
+&& ./configure –prefix=/usr/local
+make && make install
+安装autoconf
+
+wget http://mirrors.kernel.org/gnu/autoconf/autoconf-2.65.tar.gz \
+&& tar -xzvf autoconf-2.65.tar.gz \
+&& cd autoconf-2.65 \
+&& ./configure –prefix=/usr/local
+make && make install
+安装automake
+
+wget http://mirrors.kernel.org/gnu/automake/automake-1.11.tar.gz \
+&& tar xzvf automake-1.11.tar.gz \
+&& cd automake-1.11 \
+&& ./configure –prefix=/usr/local
+make && make install
+安装libtool
+
+wget http://mirrors.kernel.org/gnu/libtool/libtool-2.2.6b.tar.gz \
+&& tar xzvf libtool-2.2.6b.tar.gz \
+&& cd libtool-2.2.6b \
+&& ./configure –prefix=/usr/local
+make && make install
+<----------------------------------------------------------------------------------------------------------------------------------->
+有用的网页
+https://github.com/libexpat/libexpat.git
+https://blog.csdn.net/ty3219/article/details/47358329
+https://blog.csdn.net/flowingflying/article/category/518113
+<----------------------------------------------------------------------------------------------------------------------------------->
